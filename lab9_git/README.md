@@ -212,10 +212,6 @@ git status
 
 Между `<<<<<<< HEAD` и `=======` лежит версия из `master`, между `=======` и `>>>>>>> branch1` лежит версия из `branch1`. Выбрано **Accept Both Changes**, чтобы оставить обе строки.
 
-```bash
-git add file.txt
-git commit -m "Merge branch1: resolve conflict in file.txt"
-```
 
 ### Шаги 10–11
 
@@ -234,9 +230,6 @@ git commit -m "Merge branch1: resolve conflict in file.txt"
 
 ### Шаг 10. Слияние и исправление конфликтов
 
-```bash
-git merge Mergesort-Impl
-```
 
 <!-- Скриншот: mergesort.py в VS Code с конфликтами -->
 ![конфликты mergesort](img/23.png)
@@ -247,9 +240,6 @@ git merge Mergesort-Impl
 ### Шаги 11–12
 
 ```bash
-git log --oneline --graph
-git add README.md img
-git commit -m "Final report"
 git push
 ```
 
