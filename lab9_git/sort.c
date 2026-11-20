@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 void bubble_sort(int *a, int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -7,4 +9,18 @@ void bubble_sort(int *a, int n)
                 a[j] = a[j + 1];
                 a[j + 1] = t;
             }
+}
+
+int main(void)
+{
+    int a[] = {4, 2, 0, 7};
+    int n = sizeof(a) / sizeof(a[0]);
+
+    bubble_sort(a, n);
+
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+
+    return 0;
 }
