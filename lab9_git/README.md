@@ -60,7 +60,12 @@ git log
 После переключения `git status` пишет `On branch mybranch` вместо `On branch master`.
 
 ### Шаги 6–8. Коммит file1.txt в mybranch
-
+```bash
+echo "Виктор" > file1.txt
+git add file1.txt
+git commit -m "Add file1.txt"
+git log --oneline --graph
+```
 
 ### Шаги 9–12. Коммит file2.txt в master
 
@@ -78,14 +83,6 @@ git log
 `file2.txt` пропал, потому что он есть только в `master`. При переключении ветки Git подставляет в папку файлы этой ветки.
 
 ### Шаги 16–17. Push веток на GitHub
-
-```bash
-git add README.md img
-git commit -m "Add report"
-git push -u origin mybranch
-git switch master
-git push
-```
 
 <!-- Скриншот: страница репозитория на GitHub со списком веток master и mybranch -->
 ![ветки на GitHub](img/10.png)
