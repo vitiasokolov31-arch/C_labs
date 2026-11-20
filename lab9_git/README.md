@@ -93,41 +93,7 @@ git log --oneline --graph
 
 ### Шаги 1–4. Добавление main в sort.c
 
-```bash
-git switch mybranch
-nano sort.c
-```
 
-```c
-#include <stdio.h>
-
-/* Сортировка пузырьком */
-/* a - массив, n - количество элементов */
-void bubble_sort(int *a, int n)
-{
-    for (int i = 0; i < n - 1; i++)
-        for (int j = 0; j < n - 1 - i; j++)
-            if (a[j] > a[j + 1]) {
-                int t = a[j];
-                a[j] = a[j + 1];
-                a[j + 1] = t;
-            }
-}
-
-int main(void)
-{
-    int a[] = {4, 2, 0, 7, 1};
-    int n = sizeof(a) / sizeof(a[0]);
-
-    bubble_sort(a, n);
-
-    for (int i = 0; i < n; i++)
-        printf("%d ", a[i]);
-    printf("\n");
-
-    return 0;
-}
-```
 
 ```bash
 git diff
@@ -139,11 +105,6 @@ git diff --staged
 
 ### Шаги 5–7. После add
 
-```bash
-git add sort.c
-git diff
-git diff --staged
-```
 
 <!-- Скриншот: пустой git diff и git diff --staged -->
 ![diff после add](img/12.png)
@@ -152,11 +113,6 @@ git diff --staged
 
 В массиве удалено последнее число: `{4, 2, 0, 7, 1}` → `{4, 2, 0, 7}`.
 
-```bash
-nano sort.c
-git diff
-git diff --staged
-```
 
 <!-- Скриншот: git diff и git diff --staged -->
 ![два diff](img/13.png)
@@ -165,14 +121,6 @@ git diff --staged
 
 ### Шаги 12–16. restore --staged и коммит
 
-```bash
-git status
-git restore --staged sort.c
-git status
-git add sort.c
-git commit -m "Add main to sort.c"
-git log --oneline
-```
 
 <!-- Скриншот: оба git status (sort.c дважды, затем один раз) и git log -->
 ![restore --staged](img/14.png)
@@ -183,14 +131,6 @@ git log --oneline
 
 В `main` добавлена строка `printf("hello git\n");`.
 
-```bash
-nano sort.c
-cat sort.c
-git status
-git restore sort.c
-cat sort.c
-git status
-```
 
 <!-- Скриншот: cat и git status до и после git restore -->
 ![restore](img/15.png)
@@ -209,37 +149,11 @@ git push
 
 ### Шаги 1–9. greeting.txt и ветка feature/uppercase
 
-```bash
-git switch master
-touch greeting.txt
-git add greeting.txt
-git commit -m "Add file greeting.txt"
-echo "hello" > greeting.txt
-git add greeting.txt
-git commit -m "Add content to greeting.txt"
-
-git branch feature/uppercase
-git switch feature/uppercase
-git status
-echo "HELLO" > greeting.txt
-git add greeting.txt
-git commit -m "Make greeting uppercase"
-git branch
-git log --oneline --graph --all
-```
 
 <!-- Скриншот: git branch и git log --oneline --graph --all -->
 ![feature/uppercase](img/16.png)
 
 ### Шаги 10–14. Fast-forward merge
-
-```bash
-git switch master
-cat greeting.txt
-git diff master feature/uppercase
-git merge feature/uppercase
-cat greeting.txt
-```
 
 <!-- Скриншот: cat, diff, merge со словом Fast-forward и снова cat -->
 ![fast-forward](img/17.png)
@@ -248,11 +162,6 @@ Git выполнил **fast-forward**: в `master` не было новых ко
 
 ### Шаги 15–17. Слияние mybranch в master
 
-```bash
-git branch -d feature/uppercase
-git merge mybranch
-git log --oneline --graph --all
-```
 
 <!-- Скриншот: git log --oneline --graph --all после слияния -->
 ![merge mybranch](img/18.png)
