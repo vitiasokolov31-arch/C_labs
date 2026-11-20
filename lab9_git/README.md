@@ -170,9 +170,7 @@ Git выполнил **fast-forward**: в `master` не было новых ко
 
 ### Шаги 18–19
 
-```bash
-git add README.md img
-git commit -m "Update report"
+```
 git push
 ```
 
@@ -221,10 +219,6 @@ git commit -m "Merge branch1: resolve conflict in file.txt"
 
 ### Шаги 10–11
 
-```bash
-git log --oneline --graph
-git push
-```
 
 <!-- Скриншот: git log --oneline --graph с коммитом слияния -->
 ![после конфликта](img/21.png)
@@ -234,24 +228,6 @@ git push
 ## Оценка 5: конфликт в mergesort.py
 
 ### Шаги 1–9. Две версии mergesort.py
-
-```bash
-git switch master
-cp ~/lab9_report/base.py mergesort.py
-git add mergesort.py
-git commit -m "Add mergesort.py base"
-
-git switch -c Mergesort-Impl
-cp ~/lab9_report/righty.py mergesort.py
-git commit -am "Implement merge sort (righty)"
-
-git switch master
-cp ~/lab9_report/lefty.py mergesort.py
-git commit -am "Implement merge sort (lefty)"
-
-git log --oneline --graph --all
-git branch
-```
 
 <!-- Скриншот: git log --oneline --graph --all и git branch -->
 ![две версии](img/22.png)
@@ -267,17 +243,6 @@ git merge Mergesort-Impl
 
 В файле четыре конфликта: разный порядок строк `left`/`right`, пустая строка между функциями и разные имена четвёртой части списка (`last` в `master`, `fourth` в `Mergesort-Impl`). Оставлен вариант из `master` и пустая строка между функциями. Имя переменной надо выбрать одинаково во всех местах, иначе получится несуществующая переменная и ошибка `NameError`.
 
-Проверка, что код работает:
-
-```bash
-python3 -c "from mergesort import *; print(merge_sort2([5,3,8,1,9,2])); print(merge_sort4([5,3,8,1,9,2,7,4,6,0]))"
-rm -rf __pycache__
-git add mergesort.py
-git commit -m "Merge Mergesort-Impl: resolve conflicts"
-```
-
-<!-- Скриншот: вывод python3 с отсортированными списками -->
-![проверка](img/24.png)
 
 ### Шаги 11–12
 
@@ -289,4 +254,4 @@ git push
 ```
 
 <!-- Скриншот: репозиторий на GitHub после финального push -->
-![итог](img/25.png)
+![итог](img/24.png)

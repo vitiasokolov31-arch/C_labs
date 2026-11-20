@@ -19,10 +19,7 @@ def merge_sort2(m):
     # Merge and return
     return list(merge(right, left))
 def merge_sort4(m):
-    """Sort list, using four part merge sort"""
-    if len(m) <= 4:
         return sorted(m)
-
     # Determine the pivot point
     middle = len(m) // 2
     leftMiddle = middle // 2
